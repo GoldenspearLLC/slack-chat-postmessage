@@ -22,6 +22,7 @@ const fetch = require('node-fetch');
         'unfurl_media',
       ],
       number: ['thread_ts'],
+      object: ['attachments', 'blocks']
     };
     
     const channel = core.getInput('channel');
@@ -59,14 +60,18 @@ const fetch = require('node-fetch');
     };
     
     for (const [k, v] of Object.entries(body)) {
-      if (v === undefined) {
+      if (!v) {
         delete body[k];
       } else if (transforms.boolean.includes(k)) {
         body[k] = v === 'true' ? true : false;
       } else if (transforms.number.includes(k)) {
         body[k] = parseFloat(v);
+      } else if (transforms.object.includes(k)) {
+        body[k] = JSON.parse(v);
       }
     }
+
+  console.log('* Sending:', JSON.stringify(body, null, 2));
 
     const res = await fetch('https://slack.com/api/chat.postMessage', {
       method: 'POST',
