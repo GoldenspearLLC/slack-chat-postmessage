@@ -1,0 +1,22 @@
+{
+  "name": "slack-post-message",
+  "version": "2",
+  "description": "## Post a message to a Slack channel",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldenspearLLC/action-slack-post-message.git"
+  },
+  "keywords": [],
+  "author": "Albert Calbet <albert.calbet@goldenspear.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/GoldenspearLLC/action-slack-post-message/issues"
+  },
+  "homepage": "https://github.com/GoldenspearLLC/action-slack-post-message#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^2.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}

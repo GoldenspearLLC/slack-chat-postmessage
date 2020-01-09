@@ -1,8 +1,6 @@
 name: Notify PR
 
-on:
-  pull_request:
-    #types: [assigned, opened, synchronize, reopened]
+on: [pull_request]
 
 env:
   SLACK_BOT_TOKEN: ${{ secrets.GS_SLACK_BOT_TOKEN }}
@@ -11,6 +9,10 @@ jobs:
   notify-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: GoldenspearLLC/action-slack-post-message
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Say Hello
+        uses: ./ # Uses an action in the root directory
         with:
-          args: "{\"channel\":\"#interfaces\",\"text\":\"HELLO ACTION\"}"
+          channel: '#interfaces'
+          text: "event: ${{ github.event }}, event_name: ${{ github.event_name }} at https://github.com/GoldenspearLLC/action-slack-post-message#${{ github.head_ref }}"
