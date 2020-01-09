@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - uses: ./ # Uses an action in the root directory
       - name: Say Hello
         uses: GoldenspearLLC/action-slack-post-message@v1
         with:
-          arguments: "{\"channel\":\"#interfaces\",\"text\":\"HELLO ACTION\"}"
+          channel: '#interfaces'
+          text: 'Test __using__ _markdown_ with [links](https://github.com/GoldenspearLLC/action-slack-post-message)'

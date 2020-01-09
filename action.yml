@@ -1,12 +1,53 @@
 name: 'Slack Post Message'
 description: 'Post a message to a Slack channel'
 inputs:
-  arguments:  # id of input
-    description: 'https://api.slack.com/methods/chat.postMessage'
+  channel:
+    description: 'Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name'
     required: true
     default: ''
+  text:
+    description: "Text of the message to send. See below for an explanation of formatting. This field is usually required, unless you're providing only attachments instead. Provide no more than 40,000 characters or risk truncation."
+    required: true
+    default: ''
+  as_user:
+    description: 'Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See authorship below.'
+    required: false
+  attachments:
+    description: 'A JSON-based array of structured attachments, presented as a URL-encoded string.'
+    required: false
+  blocks:
+    description: 'A JSON-based array of structured blocks, presented as a URL-encoded string.'
+    required: false
+  icon_emoji:
+    description: 'Emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.'
+    required: false
+  icon_url:
+    description: 'URL to an image to use as the icon for this message. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.'
+    required: false
+  link_names:
+    description: 'Find and link channel names and usernames.'
+    required: false
+  mrkdwn:
+    description: 'Disable Slack markup parsing by setting to false. Enabled by default.'
+    required: false
+  parse:
+    description: 'Change how messages are treated. Defaults to none. See below.'
+    required: false
+  reply_broadcast:
+    description: 'Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false.'
+    required: false
+  thread_ts:
+    description: "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead."
+    required: false
+  unfurl_links:
+    description: 'Pass true to enable unfurling of primarily text-based content.'
+    required: false
+  unfurl_media:
+    description: 'Pass false to disable unfurling of media content.'
+    required: false
+  username:
+    description: "Set your bot's user name. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
+    required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.arguments }}
+  using: 'node12'
+  main: 'index.js'
