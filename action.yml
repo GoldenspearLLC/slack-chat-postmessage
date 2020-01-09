@@ -1,0 +1,12 @@
+name: 'Slack Post Message'
+description: 'Post a message to a Slack channel'
+inputs:
+  arguments:  # id of input
+    description: 'https://api.slack.com/methods/chat.postMessage'
+    required: true
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.arguments }}
