@@ -70,7 +70,7 @@ const fetch = require('node-fetch');
 
     const res = await fetch('https://slack.com/api/chat.postMessage', {
       method: 'POST',
-      header: {
+      headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
       },
