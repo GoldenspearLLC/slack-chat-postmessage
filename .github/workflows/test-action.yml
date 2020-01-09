@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v1
       - uses: ./ # Uses an action in the root directory
       - name: Say Hello
-        uses: GoldenspearLLC/action-slack-post-message@v1.1
+        uses: GoldenspearLLC/action-slack-post-message#node-version
         with:
           channel: '#interfaces'
           text: 'Test __using__ _markdown_ with [links](https://github.com/GoldenspearLLC/action-slack-post-message)'
