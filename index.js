@@ -50,7 +50,7 @@ const fetch = require('node-fetch');
       username,
     };
     
-    for (const [k, v] of body) {
+    for (const [k, v] of Object.entries(body)) {
       if (v === undefined) {
         delete body[k];
       } else if (transforms.boolean.includes(k)) {
