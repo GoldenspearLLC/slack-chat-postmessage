@@ -4,6 +4,14 @@ const fetch = require('node-fetch');
 
 (async function main() {
   try {
+    const {
+      SLACK_BOT_TOKEN
+    } = process.env;
+
+    if (!SLACK_BOT_TOKEN) {
+      throw new Error('Missing SLACK_BOT_TOKEN environment var');
+    }
+
     const transforms = {
       boolean: [
         'as_user',
@@ -64,6 +72,7 @@ const fetch = require('node-fetch');
       method: 'POST',
       header: {
         'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
       },
       body: JSON.stringify(body),
     });

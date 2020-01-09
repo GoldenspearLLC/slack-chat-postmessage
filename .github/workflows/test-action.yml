@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - uses: ./ # Uses an action in the root directory
       - name: Say Hello
-        uses: GoldenspearLLC/action-slack-post-message@392b677
+        uses: ./ # Uses an action in the root directory
         with:
           channel: '#interfaces'
           text: 'Test __using__ _markdown_ with [links](https://github.com/GoldenspearLLC/action-slack-post-message)'
