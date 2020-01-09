@@ -71,7 +71,7 @@ const fetch = require('node-fetch');
       }
     }
 
-  console.log('* Sending:', JSON.stringify(body, null, 2));
+  console.log(JSON.stringify(body, null, 2));
 
     const res = await fetch('https://slack.com/api/chat.postMessage', {
       method: 'POST',
