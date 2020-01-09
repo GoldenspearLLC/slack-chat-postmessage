@@ -1,0 +1,16 @@
+name: Notify PR
+
+on:
+  pull_request:
+    #types: [assigned, opened, synchronize, reopened]
+
+env:
+  SLACK_BOT_TOKEN: ${{ secrets.GS_SLACK_BOT_TOKEN }}
+
+jobs:
+  notify-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoldenspearLLC/action-slack-post-message
+        with:
+          args: "{\"channel\":\"#interfaces\",\"text\":\"HELLO ACTION\"}"
