@@ -1,9 +1,15 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const fetch = require('node-fetch');
 
 (async function main() {
   try {
+    console.log('* Installing dependencies ...');
+    const { execSync }= require('child_process');
+    const output = execSync('npm ci');
+    console.log(output);
+
+    const fetch = require('node-fetch');
+
     const transforms = {
       boolean: [
         'as_user',
@@ -15,7 +21,7 @@ const fetch = require('node-fetch');
       ],
       number: ['thread_ts'],
     };
-
+    
     const channel = core.getInput('channel');
     const text = core.getInput('text');
     const as_user = core.getInput('as_user');
