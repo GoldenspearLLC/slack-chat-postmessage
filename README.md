@@ -1,4 +1,4 @@
-# Slack Post Message
+# slack-chat-postmessage
 
 ## Post a message to a Slack channel
 
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify PR changes
-        uses: actions/action-slack-post-message@v3
+        uses: actions/slack-chat-postmessage@v3
         with:
           channel: '#general'
           text: "GITHUB::${{ github.event_name }} -- https://github.com/example/repo#${{ github.head_ref }}"

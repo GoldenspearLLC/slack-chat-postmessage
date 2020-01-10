@@ -1,4 +1,4 @@
-name: 'Slack Post Message'
+name: 'Slack chat.postMessage'
 description: 'Post a message to a Slack channel'
 inputs:
   channel:
