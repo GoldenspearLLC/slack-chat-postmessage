@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify PR changes
-        uses: actions/slack-chat-postmessage@v3
+        uses: GoldenspearLLC/slack-chat-postmessage@v3
         with:
           channel: '#general'
           text: "GITHUB::${{ github.event_name }} -- https://github.com/example/repo#${{ github.head_ref }}"
